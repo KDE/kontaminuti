@@ -42,7 +42,7 @@ class TopLevel : public KStatusNotifierItem
     Q_OBJECT
 
     public:
-        explicit TopLevel(const KAboutData *aboutData, const QString &icon = QLatin1String("ktomatotime"), QWidget *parent = 0);
+        explicit TopLevel(const KAboutData *aboutData, const QString &icon = QLatin1String("kontaminuti"), QWidget *parent = 0);
         ~TopLevel();
         void setTomatoList(const QList<Tomato> &tomatolist);
         void runTomato(const Tomato &tomato);
