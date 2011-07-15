@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Kontaminuti
+GenericName=Pomodoro Technique Timer
+Exec=kontaminuti
+Icon=kontaminuti
+Type=Application
+Terminal=false
+X-DocPath=kontaminuti/index.html
+X-KDE-StartupNotify=true
+X-DBUS-StartupType=Multi
+Categories=Qt;KDE;Utility;
