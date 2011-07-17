@@ -15,32 +15,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "tomato.h"
-
 #include <klocalizedstring.h>
 
-
-
-Tomato::Tomato(const QString &name, const unsigned time)
+Tomato::Tomato(const QString &task, const unsigned time)
   : m_time( 0 )
 {
-    setName( name );
+    setTask( task );
     setTime( time );
 }
 
 
-QString Tomato::name() const
+QString Tomato::task() const
 {
-    return m_name;
+    return m_task;
 }
 
 
-void Tomato::setName(const QString &name)
+void Tomato::setTask(const QString &task)
 {
-    if( name.isEmpty() ) {
-        m_name = i18n( "Anonymous Tomato" );
+    if( task.isEmpty() ) {
+        m_task = i18n( "Undescribed task" );
     }
     else {
-        m_name = name;
+        m_task = task;
     }
 }
 
@@ -66,8 +63,7 @@ QString Tomato::timeToString(const bool longdesc) const
 QString Tomato::int2time(const int time, const bool longdesc)
 {
     QString str;
-    const unsigned min = 60;
-    const unsigned hour = 60 * min;
+    const unsigned hour = 60;
     const unsigned day = 24 * hour;
     const unsigned year = 365 * day;
 
@@ -76,7 +72,7 @@ QString Tomato::int2time(const int time, const bool longdesc)
             str.append( i18np( "%1 year", "%1 years", time/year ) );
         }
         else {
-            str.append( i18np( "%1 a", "%1 a", time/year ) );
+            str.append( i18np( "%1 y", "%1 y", time/year ) );
         }
     }
 
@@ -106,29 +102,16 @@ QString Tomato::int2time(const int time, const bool longdesc)
         }
     }
 
-    if( (time % hour) / min ) {
+    if( time % hour ) {
         if( !str.isEmpty() ) {
             str.append( QLatin1Char( ' ' ) );
         }
 
         if( longdesc ) {
-            str.append( i18np( "%1 minute", "%1 minutes", ( (time % hour) / min) ) );
+            str.append( i18np( "%1 minute", "%1 minutes", ( time % hour ) ) );
         }
         else {
-            str.append( i18np( "%1 min", "%1 min", ( (time % hour) / min) ) );
-        }
-    }
-
-    if( time % min ) {
-        if( !str.isEmpty() ) {
-            str.append( QLatin1Char( ' ' ) );
-        }
-
-        if( longdesc ) {
-            str.append( i18np( "%1 second", "%1 seconds", time % min ) );
-        }
-        else {
-            str.append( i18np( "%1 s", "%1 s", time % min ) );
+            str.append( i18np( "%1 m", "%1 m", ( time % hour ) ) );
         }
     }
 

@@ -14,38 +14,37 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef TEA_H
-#define TEA_H
+#ifndef TOMATO_H
+#define TOMATO_H
 
 #include <QString>
-
 
 /**
  * @short this class represent a tomato.
  *
- * @author Stefan Böhmann <kde@hilefoks.org>
+ * @author Ruurd Pels <ruurd@tiscali.nl>
  */
 class Tomato {
     public:
          /**
-          * Constructs an tomato.
-          * @param name the name of this tomato.
-          * @param time the tomato time in seconds.
+          * Constructs a tomato.
+          * @param task the task for this tomato.
+          * @param time the tomato time in minutes.
           */
-        explicit Tomato(const QString &name = QString(), const unsigned time = 180);
+        explicit Tomato(const QString &task = QString(), const unsigned time = 25);
 
         /**
          * Returns the name of this tomato.
          *
          * @return the name of this tomato.
          */
-        QString name() const;
+        QString task() const;
 
         /**
          * Set the name of this the.
          * @param name the new name for this tomato.
          */
-        void setName(const QString &name);
+        void setTask(const QString &name);
 
         /**
          * Returns the time for this tomato in seconds.
@@ -62,7 +61,7 @@ class Tomato {
 
         /**
          * Returns the time for this tomato as a @ref QString.
-         * @param longdesc if true return long names like  "5 minutes 30 seconds", else returns a short form like "5 min 30 s".
+         * @param longdesc if true return long names like  "1 hour 5 minutes", else returns a short form like "1 hr 5 min".
          *
          * @return the time for this tomato as a @ref QString.
          */
@@ -71,20 +70,17 @@ class Tomato {
 
         /**
          * Returns a formatted @ref QString for the given time.
-         * @param time the time in seconds.
-         * @param longdesc if true return long names like  "5 minutes 30 seconds", else returns a short form like "5 min 30 s".
+         * @param time the time in minutes.
+         * @param longdesc if true return long names like  "1 hour 5 minutes\", else returns a short form like "1 hr 5 min".
          *
          * @return the formatted @ref QString.
          */
         static QString int2time(const int time, const bool longdesc=false);
 
     private:
-        QString m_name;
+        QString m_task;
         unsigned m_time;
 };
 
 #endif
-
-// kate: word-wrap off; encoding utf-8; indent-width 4; tab-width 4; line-numbers on; mixed-indent off; remove-trailing-space-save on; replace-tabs-save on; replace-tabs on; space-indent on;
-// vim:set spell et sw=4 ts=4 nowrap cino=l1,cs,U1:
 

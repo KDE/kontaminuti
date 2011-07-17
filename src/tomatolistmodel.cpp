@@ -62,7 +62,7 @@ QVariant TomatoListModel::data(const QModelIndex &index, int role) const
 
     if( role == Qt::DisplayRole ) {
         if( index.column() == 0 ) {
-            return m_tomatolist.at( index.row() ).name();
+            return m_tomatolist.at( index.row() ).task();
         }
 
         return m_tomatolist.at( index.row() ).timeToString();
@@ -70,13 +70,13 @@ QVariant TomatoListModel::data(const QModelIndex &index, int role) const
 
     if( role == Qt::EditRole ) {
         if( index.column() == 0 ) {
-            return m_tomatolist.at( index.row() ).name();
+            return m_tomatolist.at( index.row() ).task();
         }
         return m_tomatolist.at( index.row() ).time();
     }
 
     if( role == Qt::ToolTipRole ) {
-        QString s( m_tomatolist.at( index.row() ).name() );
+        QString s( m_tomatolist.at( index.row() ).task() );
         s.append( i18n( " (" ) );
         s.append( m_tomatolist.at( index.row() ).timeToString( true ) );
         s.append( i18n( ")" ) );
@@ -93,7 +93,7 @@ bool TomatoListModel::setData(const QModelIndex &index, const QVariant &value, i
 {
     if( index.isValid() && ( role == Qt::EditRole || role == Qt::DisplayRole ) ) {
         if( index.column() == 0 ) {
-            m_tomatolist[ index.row() ].setName( value.toString() );
+            m_tomatolist[ index.row() ].setTask( value.toString() );
         } else if( index.column() == 1 ) {
             m_tomatolist[ index.row() ].setTime( value.toUInt() );
         }
@@ -122,7 +122,7 @@ bool TomatoListModel::insertRows(int row, int count, const QModelIndex &parent)
     beginInsertRows( QModelIndex(), row, row+count-1 );
 
     for(int i = 0; i < count; ++i) {
-        m_tomatolist.insert( row, Tomato( i18n( "Unnamed Tomato" ), 180 ) );
+        m_tomatolist.insert( row, Tomato( i18n( "Undescribed task" ), 180 ) );
     }
 
     endInsertRows();

@@ -141,7 +141,7 @@ void TopLevel::setTomatoList(const QList<Tomato> &tomatolist) {
 
     for(int i=0; i<m_tomatolist.size(); ++i) {
         tomatolistGroup.writeEntry(QString( QLatin1String( "Tomato%1 Time" ) ).arg( i ), m_tomatolist.at( i ).time() );
-        tomatolistGroup.writeEntry(QString( QLatin1String( "Tomato%1 Name" ) ).arg( i ), m_tomatolist.at( i ).name() );
+        tomatolistGroup.writeEntry(QString( QLatin1String( "Tomato%1 Name" ) ).arg( i ), m_tomatolist.at( i ).task() );
     }
     tomatolistGroup.config()->sync();
 
@@ -172,8 +172,8 @@ void TopLevel::loadTomatoMenuItems() {
 
     foreach(const Tomato &t, m_tomatolist) {
         QAction *a = contextMenu()->addAction(
-                   i18nc( "%1 - name of the tomato, %2 - the predefined time for "
-                          "the tomato", "%1 (%2)", t.name(), t.timeToString() )
+                   i18nc( "%1 - task for this tomato, %2 - the predefined time for "
+                          "the task", "%1 (%2)", t.task(), t.timeToString() )
                      );
 
         a->setData( ++i );
@@ -242,7 +242,7 @@ void TopLevel::tomatoTimeEvent()
     if( m_runningTomatoTime == 0 ) {
         m_timer->stop();
 
-        QString content = i18n( "%1 is now ready!", m_runningTomato.name() );
+        QString content = i18n( "%1 is now ready!", m_runningTomato.task() );
 
         //NOTICE Timeout is set to ~24 days when no auto hide is request. Ok - nearly the same...
         if( m_usepopup ) {
@@ -262,7 +262,7 @@ void TopLevel::tomatoTimeEvent()
         repaintTrayIcon();
     }
     else if(m_runningTomatoTime<0) {
-        QString content = i18n( "%1 is ready since %2!", m_runningTomato.name(), Tomato::int2time( m_runningTomatoTime*-1, true ) );
+        QString content = i18n( "%1 is ready since %2!", m_runningTomato.task(), Tomato::int2time( m_runningTomatoTime*-1, true ) );
         setTooltipText( content );
 
         if( m_runningTomatoTime == m_nextNotificationTime ) {
@@ -278,7 +278,7 @@ void TopLevel::tomatoTimeEvent()
     }
     else {
         --m_runningTomatoTime;
-        setTooltipText( i18nc( "%1 is the time, %2 is the name of the tomato", "%1 left for %2.", Tomato::int2time( m_runningTomatoTime, true ), m_runningTomato.name() ) );
+        setTooltipText( i18nc( "%1 is the time, %2 is the name of the tomato", "%1 left for %2.", Tomato::int2time( m_runningTomatoTime, true ), m_runningTomato.task() ) );
     }
 
     if( m_usevisualize ) {
