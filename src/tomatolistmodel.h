@@ -26,7 +26,7 @@ class Tomato;
 /**
  * @short provides an model used by SettingsDialog
  *
- * @author Stefan Böhmann <kde@hilefoks.org>
+ * @author Ruurd Pels <ruurd@tiscali.nl>
  */
 class TomatoListModel : public QAbstractTableModel
 {

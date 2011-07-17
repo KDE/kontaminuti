@@ -33,9 +33,9 @@ class KAboutData;
 
 
 /**
- * @short the main class for KTomatotime
+ * @short the main class for Kontaminuti
  *
- * @author Stefan Böhmann <kde@hilefoks.org>
+ * @author Ruurd Pels <ruurd@tiscali.nl>
  */
 class TopLevel : public KStatusNotifierItem
 {

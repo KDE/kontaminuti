@@ -58,9 +58,9 @@ TopLevel::TopLevel(const KAboutData *aboutData, const QString &icon, QWidget *pa
 
     // If the list of tomatos is empty insert a set of default tomatos.
     if( m_tomatolist.isEmpty() ) {
-        m_tomatolist.append( Tomato(i18n( "Black Tomato" ), 180 ) );
-        m_tomatolist.append( Tomato(i18n( "Earl Grey" ), 300 ) );
-        m_tomatolist.append( Tomato(i18n( "Fruit Tomato" ), 480 ) );
+        m_tomatolist.append( Tomato(i18n( "Read email" ), 25 ) );
+        m_tomatolist.append( Tomato(i18n( "Do timesheet" ), 25 ) );
+        m_tomatolist.append( Tomato(i18n( "Update workstation" ), 25 ) );
     }
 
 
@@ -125,7 +125,7 @@ void TopLevel::checkState() {
     m_anonAct->setEnabled( !state );
 
     if( !state ) {
-        setTooltipText( i18n( "No steeping tomato." ) );
+        setTooltipText( i18n( "No current task." ) );
     }
 }
 
@@ -237,7 +237,7 @@ void TopLevel::repaintTrayIcon()
 
 void TopLevel::tomatoTimeEvent()
 {
-    QString title = i18n( "The Tomato Cooker" );
+    QString title = i18n( "The Pomodoro Timer" );
 
     if( m_runningTomatoTime == 0 ) {
         m_timer->stop();
@@ -337,7 +337,7 @@ void TopLevel::showPopup(bool active, const QPoint& point)
 
 void TopLevel::setTooltipText(const QString& content)
 {
-    const QString title = i18n( "The Tomato Cooker" );
+    const QString title = i18n( "The Pomodoro Timer" );
     setToolTip( iconName(), title, content );
     m_popup->setView( title, content, KIcon( iconName() ).pixmap( 22,22 ) );
 }

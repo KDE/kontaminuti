@@ -26,7 +26,7 @@ class TimeEditUI;
 /**
  * @short the timeedit dialog.
  *
- * @author Stefan Böhmann <kde@hilefoks.org>
+ * @author Ruurd Pels <ruurd@tiscali.nl>
  */
 class TimeEditDialog : public KDialog
 {

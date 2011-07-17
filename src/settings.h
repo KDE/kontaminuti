@@ -29,7 +29,7 @@ class SettingsUI;
 /**
  * @short the settings dialog
  *
- * @author Stefan Böhmann <kde@hilefoks.org>
+ * @author Ruurd Pels <ruurd@tiscali.nl>
  */
 class SettingsDialog : public KDialog
 {
