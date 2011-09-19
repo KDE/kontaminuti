@@ -71,7 +71,7 @@ class Tomato {
         /**
          * Returns a formatted @ref QString for the given time.
          * @param time the time in minutes.
-         * @param longdesc if true return long names like  "1 hour 5 minutes\", else returns a short form like "1 hr 5 min".
+         * @param longdesc if true return long names like  "1 hour 5 minutes", else returns a short form like "1 hr 5 min".
          *
          * @return the formatted @ref QString.
          */

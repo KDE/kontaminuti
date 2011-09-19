@@ -102,7 +102,7 @@ QString Tomato::int2time(const int time, const bool longdesc)
         }
     }
 
-    if( time % hour ) {
+    if( (time % hour) / 1 ) {
         if( !str.isEmpty() ) {
             str.append( QLatin1Char( ' ' ) );
         }

@@ -214,7 +214,7 @@ void TopLevel::runTomato(QAction *a)
 void TopLevel::runTomato(const Tomato &tomato)
 {
     m_runningTomato = tomato;
-    m_runningTomatoTime = m_runningTomato.time();
+    m_runningTomatoTime = m_runningTomato.time() * 60;
 
     checkState();
     repaintTrayIcon();
@@ -278,7 +278,7 @@ void TopLevel::tomatoTimeEvent()
     }
     else {
         --m_runningTomatoTime;
-        setTooltipText( i18nc( "%1 is the time, %2 is the name of the tomato", "%1 left for %2.", Tomato::int2time( m_runningTomatoTime, true ), m_runningTomato.task() ) );
+        setTooltipText( i18nc( "%1 is the time, %2 is the name of the tomato", "%1 left for %2.", Tomato::int2time( m_runningTomatoTime / 60, true ), m_runningTomato.task() ) );
     }
 
     if( m_usevisualize ) {
