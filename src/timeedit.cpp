@@ -50,9 +50,9 @@ TimeEditDialog::TimeEditDialog(TopLevel *toplevel)
     KSharedConfigPtr config = KSharedConfig::openConfig();
     KConfigGroup group( config, "AnonymousTomatoDialog" );
 
-    int time=group.readEntry( "AnonymousTomatoTime", 180 );
+    int time=group.readEntry( "AnonymousTomatoTime", 25 );
 
-    ui->minutes->setValue( time / 60 );
+    ui->minutes->setValue( time );
 
     ui->minutes->setFocus( Qt::ShortcutFocusReason );
 
@@ -86,7 +86,7 @@ void TimeEditDialog::accept()
 {
     hide();
 
-    int time = ui->minutes->value() * 60;
+    int time = ui->minutes->value();
 
     KSharedConfigPtr config = KSharedConfig::openConfig();
     KConfigGroup group( config, "AnonymousTomatoDialog" );

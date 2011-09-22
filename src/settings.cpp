@@ -261,7 +261,7 @@ void SettingsDialog::updateSelection(const QItemSelection &selected, const QItem
     }
 
     ui->tomatoNameEdit->setText( name );
-    ui->minutesSpin->setValue( time / 60 );
+    ui->minutesSpin->setValue( time );
 }
 
 
@@ -270,7 +270,7 @@ void SettingsDialog::timeValueChanged()
     QModelIndexList items = ui->tomatolistTreeView->selectionModel()->selection().indexes();
 
     if( !items.isEmpty() ) {
-        int time = ui->minutesSpin->value() * 60;
+        int time = ui->minutesSpin->value();
 
         if( time <= 0 ) {
             time = 1;
