@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>599</width>
-    <height>535</height>
+    <width>633</width>
+    <height>554</height>
    </rect>
   </property>
   <layout class="QGridLayout">
@@ -23,6 +23,12 @@
       </property>
       <item>
        <widget class="QTreeView" name="tomatolistTreeView">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="rootIsDecorated">
          <bool>false</bool>
         </property>
@@ -118,18 +124,33 @@
      <property name="enabled">
       <bool>false</bool>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="title">
       <string>Tomato Properties</string>
      </property>
      <layout class="QGridLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Name</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
-      <item row="0" column="1" colspan="4">
+      <item row="0" column="1" colspan="3">
        <widget class="KLineEdit" name="tomatoNameEdit">
         <property name="enabled">
          <bool>false</bool>
@@ -138,12 +159,21 @@
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
          <string>Time</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="1" colspan="2">
        <widget class="KIntSpinBox" name="minutesSpin">
         <property name="enabled">
          <bool>false</bool>
@@ -153,27 +183,10 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="1" column="3">
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string>min</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="KIntSpinBox" name="secondsSpin">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="maximum">
-         <number>59</number>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>sec</string>
         </property>
        </widget>
       </item>
@@ -340,11 +353,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KIntSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>knuminput.h</header>
-  </customwidget>
-  <customwidget>
    <class>KButtonGroup</class>
    <extends>QGroupBox</extends>
    <header>kbuttongroup.h</header>
@@ -354,6 +362,11 @@
    <class>KLineEdit</class>
    <extends>QLineEdit</extends>
    <header>klineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KIntSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>knuminput.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

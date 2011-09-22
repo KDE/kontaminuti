@@ -122,7 +122,6 @@ SettingsDialog::SettingsDialog(TopLevel *toplevel, const QList<Tomato> &tomatos)
 
     connect( ui->tomatoNameEdit, SIGNAL( textChanged(QString) ), this, SLOT( nameValueChanged(QString) ) );
     connect( ui->minutesSpin, SIGNAL( valueChanged(int) ), this, SLOT( timeValueChanged() ) );
-    connect( ui->secondsSpin, SIGNAL( valueChanged(int) ), this, SLOT( timeValueChanged() ) );
 }
 
 
@@ -247,7 +246,6 @@ void SettingsDialog::updateSelection(const QItemSelection &selected, const QItem
     ui->tomatoPropertiesGroup->setEnabled( state );
     ui->tomatoNameEdit->setEnabled( state );
     ui->minutesSpin->setEnabled( state );
-    ui->secondsSpin->setEnabled( state );
     ui->removeButton->setEnabled( state );
 
     if( state ) {
@@ -264,7 +262,6 @@ void SettingsDialog::updateSelection(const QItemSelection &selected, const QItem
 
     ui->tomatoNameEdit->setText( name );
     ui->minutesSpin->setValue( time / 60 );
-    ui->secondsSpin->setValue( time % 60 );
 }
 
 
@@ -273,12 +270,10 @@ void SettingsDialog::timeValueChanged()
     QModelIndexList items = ui->tomatolistTreeView->selectionModel()->selection().indexes();
 
     if( !items.isEmpty() ) {
-        int time = ui->secondsSpin->value();
-        time += ui->minutesSpin->value() * 60;
+        int time = ui->minutesSpin->value() * 60;
 
         if( time <= 0 ) {
             time = 1;
-            ui->secondsSpin->setValue( time );
         }
         m_model->setData( m_model->index( items.at(0).row(), 1 ), time, Qt::EditRole );
     }

@@ -53,7 +53,6 @@ TimeEditDialog::TimeEditDialog(TopLevel *toplevel)
     int time=group.readEntry( "AnonymousTomatoTime", 180 );
 
     ui->minutes->setValue( time / 60 );
-    ui->seconds->setValue( time % 60 );
 
     ui->minutes->setFocus( Qt::ShortcutFocusReason );
 
@@ -68,7 +67,6 @@ TimeEditDialog::TimeEditDialog(TopLevel *toplevel)
     move( QPoint( x, y ) );
 
     connect( ui->minutes, SIGNAL( valueChanged(int) ), this, SLOT( checkOkButtonState() ) );
-    connect( ui->seconds, SIGNAL( valueChanged(int) ), this, SLOT( checkOkButtonState() ) );
 }
 
 
@@ -80,7 +78,7 @@ TimeEditDialog::~TimeEditDialog()
 
 void TimeEditDialog::checkOkButtonState()
 {
-    enableButtonOk( ui->minutes->value() || ui->seconds->value() );
+    enableButtonOk( ui->minutes->value() );
 }
 
 
@@ -88,8 +86,7 @@ void TimeEditDialog::accept()
 {
     hide();
 
-    int time = ui->seconds->value();
-    time += ui->minutes->value() * 60;
+    int time = ui->minutes->value() * 60;
 
     KSharedConfigPtr config = KSharedConfig::openConfig();
     KConfigGroup group( config, "AnonymousTomatoDialog" );
