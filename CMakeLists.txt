@@ -18,13 +18,7 @@ include_directories( ${KDE4_INCLUDES} )
 # Put configure checks below this line.
 set( CMAKE_REQUIRED_DEFINITIONS ${_KDE4_PLATFORM_DEFINITIONS} )
 
-macro_optional_add_subdirectory( kteatime )
-
-if( Q_WS_X11 )
-  macro_optional_add_subdirectory( ktux )
-  macro_optional_add_subdirectory( amor )
-endif( Q_WS_X11 )
-
+macro_optional_add_subdirectory( kontaminuti )
 macro_optional_add_subdirectory( doc )
 macro_display_feature_log()
 
