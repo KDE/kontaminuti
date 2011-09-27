@@ -7,9 +7,13 @@ is a cooking alarm in the form of a red tomato.
 Initially a shameless rip of kteatime. Did some refactoring, futzed
 about with the texts and did some work on the icons etcetera.
 
+Todo:
+- Fix the thing so it works better
+- Get rid of the long startup notification
+- Vet the code and clean it up
+
 Lots to be desired. Basic ideas:
 
-- Fix the thing so it works better
 - Optionally tie in with the todo list in kontact
 - Optionally tie in with the journal to remmember tasks done
 - Optionally play a ticking sound or something similar to
@@ -18,4 +22,4 @@ Lots to be desired. Basic ideas:
 - Display the number of remaining minutes in the icon
 - Change the color to a green tomato if task is done
 
-
+Ruurd
