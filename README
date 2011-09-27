@@ -1,7 +1,7 @@
 kontaminuti
 -----------
 Literally 'count minutes' - the Italian word for cooking alarm.
-I chose this name because one of the Pomodory Technique helpers 
+I chose this name because one of the Pomodory Technique helpers
 is a cooking alarm in the form of a red tomato.
 
 Initially a shameless rip of kteatime. Did some refactoring, futzed
@@ -10,6 +10,12 @@ about with the texts and did some work on the icons etcetera.
 Lots to be desired. Basic ideas:
 
 - Fix the thing so it works better
-- Tie in with the todo list in kontact
-- Tie in with the journal to remmember tasks done
-- Make above two optional
+- Optionally tie in with the todo list in kontact
+- Optionally tie in with the journal to remmember tasks done
+- Optionally play a ticking sound or something similar to
+  improve your focus during execution of the tasks
+- add the ability to pause the tasks
+- Display the number of remaining minutes in the icon
+- Change the color to a green tomato if task is done
+
+
