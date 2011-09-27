@@ -14,57 +14,58 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "toplevel.h"
 
 #include <KApplication>
 #include <KAboutData>
 #include <KCmdLineArgs>
 
-
-int main (int argc, char* argv[])
+int main(int argc, char* argv[])
 {
-    KAboutData aboutData( "kontaminuti", 0, ki18n( "Kontaminuti" ), "1.2.2",
-                          ki18n( "KDE utility for the Pomodoro Technique." ),
-                          KAboutData::License_GPL,
-                          ki18n( "2011, Ruurd Pels"
-                               )
-                        );
-
-    aboutData.addAuthor(
-        ki18n( "Ruurd Pels" ),
-        ki18n( "Current maintainer" ),
-        "ruurd@tiscali.nl",
-        "http://home.tiscali.nl/ruurd",
-        "ruurd"
+    KAboutData aboutData
+    (
+      "kontaminuti",
+      0,
+      ki18n("Kontaminuti"),
+      "0.0.0",
+      ki18n("KDE utility for the Pomodoro Technique."),
+      KAboutData::License_GPL,
+      ki18n("2011, Ruurd Pels")
     );
 
-    KCmdLineArgs::init( argc, argv, &aboutData );
+    aboutData.addAuthor
+    (
+      ki18n("Ruurd Pels"),
+      ki18n("Current maintainer"),
+      "ruurd@tiscali.nl",
+      "http://home.tiscali.nl/ruurd",
+      "ruurd"
+    );
 
+    KCmdLineArgs::init(argc, argv, &aboutData);
     KCmdLineOptions options;
-    options.add( "t" );
-    options.add( "time <minutes>", ki18n( "Start a new task with this time." ) );
-    options.add( "n");
-    options.add( "name <name>", ki18n( "Use this name for the task started." ) );
-
-    KCmdLineArgs::addCmdLineOptions( options );
+    options.add("t");
+    options.add("time <minutes>", ki18n("Start a new task with this time."));
+    options.add("n");
+    options.add("name <name>", ki18n("Use this name for the task started."));
+    KCmdLineArgs::addCmdLineOptions(options);
 
     KApplication app;
-    QApplication::setQuitOnLastWindowClosed( false );
-
+    QApplication::setQuitOnLastWindowClosed(false);
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    TopLevel *toplevel = new TopLevel(&aboutData);
 
-    TopLevel *toplevel=new TopLevel( &aboutData );
-
-    if(args->isSet("time")) {
-        const int time=args->getOption( "time" ).toInt();
-        if( time > 0 ) {
-            const Tomato tomato( args->isSet("name") ? args->getOption("name") : i18n( "Anonymous Tomato" ), time );
-
-            toplevel->runTomato( tomato );
+    if (args->isSet("time"))
+    {
+        const int time = args->getOption("time").toInt();
+        if (time > 0)
+        {
+            const Tomato tomato(args->isSet("name") ? args->getOption("name") : i18n("Anonymous Tomato"), time);
+            toplevel->runTomato(tomato);
         }
     }
     args->clear();
-
     return app.exec();
 }
 

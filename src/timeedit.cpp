@@ -23,80 +23,80 @@
 
 class TimeEditUI : public QWidget, public Ui::TimeEditWidget
 {
-    Q_OBJECT
-    public:
-        TimeEditUI(QWidget *parent = 0)
-          : QWidget( parent )
-        {
-            setupUi( this );
-        }
+  Q_OBJECT
+public:
+  TimeEditUI(QWidget *parent = 0)
+      : QWidget(parent)
+  {
+    setupUi(this);
+  }
 };
 
 
 
 
 TimeEditDialog::TimeEditDialog(TopLevel *toplevel)
-  : KDialog(),
-    m_toplevel( toplevel )
+    : KDialog(),
+    m_toplevel(toplevel)
 {
-    setCaption( i18n( "Anonymous Tomato" ) );
+  setCaption(i18n("Anonymous Tomato"));
 
-    setButtonWhatsThis( KDialog::Ok, i18n( "Start a new anonymous tomato with the time configured in this dialog." ) );
-    setButtonWhatsThis( KDialog::Cancel, i18n( "Close this dialog without starting a new tomato." ) );
+  setButtonWhatsThis(KDialog::Ok, i18n("Start a new anonymous tomato with the time configured in this dialog."));
+  setButtonWhatsThis(KDialog::Cancel, i18n("Close this dialog without starting a new tomato."));
 
-    ui = new TimeEditUI( this );
-    setMainWidget( ui );
+  ui = new TimeEditUI(this);
+  setMainWidget(ui);
 
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup group( config, "AnonymousTomatoDialog" );
+  KSharedConfigPtr config = KSharedConfig::openConfig();
+  KConfigGroup group(config, "AnonymousTomatoDialog");
 
-    int time=group.readEntry( "AnonymousTomatoTime", 25 );
+  int time = group.readEntry("AnonymousTomatoTime", 25);
 
-    ui->minutes->setValue( time );
+  ui->minutes->setValue(time);
 
-    ui->minutes->setFocus( Qt::ShortcutFocusReason );
+  ui->minutes->setFocus(Qt::ShortcutFocusReason);
 
-    restoreDialogSize( group );
+  restoreDialogSize(group);
 
-    QDesktopWidget desktop;
-    int x = group.readEntry( "AnonymousTomatoDialogXPos", desktop.screenGeometry().width()/2 - width()/2 );
-    int y = group.readEntry( "AnonymousTomatoDialogYPos", desktop.screenGeometry().height()/2 - height()/2 );
+  QDesktopWidget desktop;
+  int x = group.readEntry("AnonymousTomatoDialogXPos", desktop.screenGeometry().width() / 2 - width() / 2);
+  int y = group.readEntry("AnonymousTomatoDialogYPos", desktop.screenGeometry().height() / 2 - height() / 2);
 
-    x = qMin( qMax( 0, x ), desktop.screenGeometry().width() - width() );
-    x = qMin( qMax( 0, y ), desktop.screenGeometry().height() - height() );
-    move( QPoint( x, y ) );
+  x = qMin(qMax(0, x), desktop.screenGeometry().width() - width());
+  x = qMin(qMax(0, y), desktop.screenGeometry().height() - height());
+  move(QPoint(x, y));
 
-    connect( ui->minutes, SIGNAL( valueChanged(int) ), this, SLOT( checkOkButtonState() ) );
+  connect(ui->minutes, SIGNAL(valueChanged(int)), this, SLOT(checkOkButtonState()));
 }
 
 
 TimeEditDialog::~TimeEditDialog()
 {
-    delete ui;
+  delete ui;
 }
 
 
 void TimeEditDialog::checkOkButtonState()
 {
-    enableButtonOk( ui->minutes->value() );
+  enableButtonOk(ui->minutes->value());
 }
 
 
 void TimeEditDialog::accept()
 {
-    hide();
+  hide();
 
-    int time = ui->minutes->value();
+  int time = ui->minutes->value();
 
-    KSharedConfigPtr config = KSharedConfig::openConfig();
-    KConfigGroup group( config, "AnonymousTomatoDialog" );
-    group.writeEntry( "AnonymousTomatoTime", time );
-    saveDialogSize( group );
+  KSharedConfigPtr config = KSharedConfig::openConfig();
+  KConfigGroup group(config, "AnonymousTomatoDialog");
+  group.writeEntry("AnonymousTomatoTime", time);
+  saveDialogSize(group);
 
-    group.writeEntry( "AnonymousTomatoDialogXPos", x() );
-    group.writeEntry( "AnonymousTomatoDialogYPos", y() );
+  group.writeEntry("AnonymousTomatoDialogXPos", x());
+  group.writeEntry("AnonymousTomatoDialogYPos", y());
 
-    m_toplevel->runTomato( Tomato( i18n( "Anonymous Tomato" ), time ) );
+  m_toplevel->runTomato(Tomato(i18n("Anonymous Tomato"), time));
 }
 
 

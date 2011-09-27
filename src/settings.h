@@ -14,51 +14,50 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
 #include "ui_settings.h"
-
 
 class TopLevel;
 class TomatoListModel;
 class Tomato;
 class SettingsUI;
 
-
 /**
  * @short the settings dialog
  *
  * @author Ruurd Pels <ruurd@tiscali.nl>
  */
-class SettingsDialog : public KDialog
+class SettingsDialog: public KDialog
 {
     Q_OBJECT
-    public:
-        SettingsDialog(TopLevel *toplevel, const QList<Tomato> &tomatos);
-        ~SettingsDialog();
+public:
+    SettingsDialog(TopLevel *toplevel, const QList<Tomato> &tomatos);
+    ~SettingsDialog();
 
-    private slots:
-        void updateSelection(const QItemSelection &selected, const QItemSelection &deselected);
-        void accept();
-        void checkPopupButtonState(bool b);
-        void confButtonClicked();
+private slots:
+    void updateSelection(const QItemSelection &selected, const QItemSelection &deselected);
+    void accept();
+    void checkPopupButtonState(bool b);
+    void confButtonClicked();
 
-        void newButtonClicked();
-        void removeButtonClicked();
-        void upButtonClicked();
-        void downButtonClicked();
+    void newButtonClicked();
+    void removeButtonClicked();
+    void upButtonClicked();
+    void downButtonClicked();
 
-        void nameValueChanged(const QString &text);
-        void timeValueChanged();
+    void nameValueChanged(const QString &text);
+    void timeValueChanged();
 
-    private:
-        void moveSelectedItem(bool moveup);
+private:
+    void moveSelectedItem(bool moveup);
 
-    private:
-        SettingsUI *ui;
-        TopLevel *m_toplevel;
-        TomatoListModel *m_model;
+private:
+    SettingsUI *ui;
+    TopLevel *m_toplevel;
+    TomatoListModel *m_model;
 };
 
 
