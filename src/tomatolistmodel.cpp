@@ -122,7 +122,7 @@ bool TomatoListModel::insertRows(int row, int count, const QModelIndex &parent)
     beginInsertRows( QModelIndex(), row, row+count-1 );
 
     for(int i = 0; i < count; ++i) {
-        m_tomatolist.insert( row, Tomato( i18n( "Undescribed task" ), 180 ) );
+        m_tomatolist.insert( row, Tomato( i18n( "New task" ), 25 ) );
     }
 
     endInsertRows();
