@@ -30,19 +30,19 @@ class TimeEditUI;
  */
 class TimeEditDialog : public KDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  TimeEditDialog(TopLevel *toplevel);
-  ~TimeEditDialog();
+    TimeEditDialog(TopLevel *toplevel);
+    ~TimeEditDialog();
 
 private slots:
-  void checkOkButtonState();
-  void accept();
+    void checkOkButtonState();
+    void accept();
 
 private:
-  TimeEditUI *ui;
-  TopLevel *m_toplevel;
+    TimeEditUI *ui;
+    TopLevel *m_toplevel;
 };
 
 #endif

@@ -27,60 +27,60 @@
 class Tomato
 {
 public:
-  /**
-   * Constructs a tomato.
-   * @param task the task for this tomato.
-   * @param time the tomato time in minutes.
-   */
-  explicit Tomato(const QString &task = QString(), const unsigned time = 25);
+    /**
+     * Constructs a tomato.
+     * @param task the task for this tomato.
+     * @param time the tomato time in minutes.
+     */
+    explicit Tomato(const QString &task = QString(), const unsigned time = 25);
 
-  /**
-   * Returns the name of this tomato.
-   *
-   * @return the name of this tomato.
-   */
-  QString task() const;
+    /**
+     * Returns the name of this tomato.
+     *
+     * @return the name of this tomato.
+     */
+    QString task() const;
 
-  /**
-   * Set the name of this the.
-   * @param name the new name for this tomato.
-   */
-  void setTask(const QString &name);
+    /**
+     * Set the name of this the.
+     * @param name the new name for this tomato.
+     */
+    void setTask(const QString &name);
 
-  /**
-   * Returns the time for this tomato in seconds.
-   *
-   * @return the time for this tomato in seconds.
-   */
-  unsigned time() const;
+    /**
+     * Returns the time for this tomato in seconds.
+     *
+     * @return the time for this tomato in seconds.
+     */
+    unsigned time() const;
 
-  /**
-   * Set the time of this tomato.
-   * @param time the new time for this tomato in seconds.
-   */
-  void setTime(const unsigned time);
+    /**
+     * Set the time of this tomato.
+     * @param time the new time for this tomato in seconds.
+     */
+    void setTime(const unsigned time);
 
-  /**
-   * Returns the time for this tomato as a @ref QString.
-   * @param longdesc if true return long names like  "1 hour 5 minutes", else returns a short form like "1 hr 5 min".
-   *
-   * @return the time for this tomato as a @ref QString.
-   */
-  QString timeToString(const bool longdesc = false) const;
+    /**
+     * Returns the time for this tomato as a @ref QString.
+     * @param longdesc if true return long names like  "1 hour 5 minutes", else returns a short form like "1 hr 5 min".
+     *
+     * @return the time for this tomato as a @ref QString.
+     */
+    QString timeToString(const bool longdesc = false) const;
 
 
-  /**
-   * Returns a formatted @ref QString for the given time.
-   * @param time the time in minutes.
-   * @param longdesc if true return long names like  "1 hour 5 minutes", else returns a short form like "1 hr 5 min".
-   *
-   * @return the formatted @ref QString.
-   */
-  static QString int2time(const int time, const bool longdesc = false);
+    /**
+     * Returns a formatted @ref QString for the given time.
+     * @param time the time in minutes.
+     * @param longdesc if true return long names like  "1 hour 5 minutes", else returns a short form like "1 hr 5 min".
+     *
+     * @return the formatted @ref QString.
+     */
+    static QString int2time(const int time, const bool longdesc = false);
 
 private:
-  QString m_task;
-  unsigned m_time;
+    QString m_task;
+    unsigned m_time;
 };
 
 #endif

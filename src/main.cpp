@@ -25,22 +25,22 @@ int main(int argc, char* argv[])
 {
     KAboutData aboutData
     (
-      "kontaminuti",
-      0,
-      ki18n("Kontaminuti"),
-      "0.0.0",
-      ki18n("KDE utility for the Pomodoro Technique."),
-      KAboutData::License_GPL,
-      ki18n("2011, Ruurd Pels")
+        "kontaminuti",
+        0,
+        ki18n("Kontaminuti"),
+        "0.0.0",
+        ki18n("KDE utility for the Pomodoro Technique."),
+        KAboutData::License_GPL,
+        ki18n("2011, Ruurd Pels")
     );
 
     aboutData.addAuthor
     (
-      ki18n("Ruurd Pels"),
-      ki18n("Current maintainer"),
-      "ruurd@tiscali.nl",
-      "http://home.tiscali.nl/ruurd",
-      "ruurd"
+        ki18n("Ruurd Pels"),
+        ki18n("Current maintainer"),
+        "ruurd@tiscali.nl",
+        "http://home.tiscali.nl/ruurd",
+        "ruurd"
     );
 
     KCmdLineArgs::init(argc, argv, &aboutData);
