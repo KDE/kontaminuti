@@ -234,17 +234,28 @@ void TopLevel::runTomato(const Tomato &tomato)
     checkState();
     repaintTrayIcon();
 
-    m_timer->start(1000 * 60);
+    m_timer->start(1000);
 }
 
 
 void TopLevel::repaintTrayIcon()
 {
-    if (m_runningTomatoTime != 0 && m_usevisualize)
+    QPixmap overlayImg = KIcon(m_iconname).pixmap(22, 22);
+    if (m_runningTomatoTime > 0 && m_usevisualize)
     {
         int oldWidth = 22;
+        int minutes = 0;
 
-        QString countStr = QString::number(m_runningTomatoTime / 60);
+        // morph running time into something logical
+        if ((m_runningTomatoTime % 60) == 0)
+        {
+            minutes = m_runningTomatoTime / 60;
+        }
+        else
+        {
+            minutes = (m_runningTomatoTime / 60) + 1;
+        }
+        QString countStr = QString::number(minutes);
         QFont f = KGlobalSettings::generalFont();
         f.setBold(true);
 
@@ -258,7 +269,6 @@ void TopLevel::repaintTrayIcon()
         }
 
         // overlay
-        QPixmap overlayImg = KIcon(m_iconname).pixmap(22, 22);
         QPainter p(&overlayImg);
         p.setFont(f);
         KColorScheme scheme(QPalette::Active, KColorScheme::View);
@@ -269,27 +279,33 @@ void TopLevel::repaintTrayIcon()
         boundingRect.setHeight(qMin(boundingRect.height(), oldWidth));
         boundingRect.moveTo((oldWidth - boundingRect.width()) / 2, ((oldWidth - boundingRect.height()) / 2) - 1);
         p.setOpacity(0.7);
-        QBrush br(QColor(255, 255, 255), Qt::SolidPattern);
+        QBrush br(QColor(255, 0, 0), Qt::SolidPattern);
         p.setBrush(br);
-        p.setPen(QColor(255, 255, 255));
+        p.setPen(QColor(255, 0, 0));
         p.drawRoundedRect(boundingRect, 2.0, 2.0);
 
         p.setBrush(Qt::NoBrush);
-        p.setPen(QColor(0, 0, 0));
+        p.setPen(QColor(255, 255, 255));
         p.setOpacity(1.0);
         p.drawText(overlayImg.rect(), Qt::AlignCenter, countStr);
-        setIconByPixmap(overlayImg);
     }
-    else
-    {
-        setOverlayIconByName(QString());
-    }
+    setIconByPixmap(overlayImg);
 }
 
 
 void TopLevel::tomatoTimeEvent()
 {
     QString title = i18n("The Pomodoro Timer");
+    // morph running time into something logical
+    int minutes = 0;
+    if ((m_runningTomatoTime % 60) == 0)
+    {
+        minutes = m_runningTomatoTime / 60;
+    }
+    else
+    {
+        minutes = (m_runningTomatoTime / 60) + 1;
+    }
 
     if (m_runningTomatoTime == 0)
     {
@@ -318,7 +334,7 @@ void TopLevel::tomatoTimeEvent()
     }
     else if (m_runningTomatoTime < 0)
     {
-        QString content = i18n("%1 is ready since %2!", m_runningTomato.task(), Tomato::int2time(m_runningTomatoTime * -1, true));
+        QString content = i18n("%1 is ready since %2!", m_runningTomato.task(), Tomato::int2time(minutes * -1, true));
         setTooltipText(content);
 
         if (m_runningTomatoTime == m_nextNotificationTime)
@@ -337,7 +353,7 @@ void TopLevel::tomatoTimeEvent()
     else
     {
         --m_runningTomatoTime;
-        setTooltipText(i18nc("%1 is the time, %2 is the name of the tomato", "%1 left for %2.", Tomato::int2time(m_runningTomatoTime / 60, true), m_runningTomato.task()));
+        setTooltipText(i18nc("%1 is the time, %2 is the name of the tomato", "%1 left for %2.", Tomato::int2time(minutes, true), m_runningTomato.task()));
     }
 
     if (m_usevisualize)
