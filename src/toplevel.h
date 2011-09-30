@@ -63,6 +63,7 @@ private:
     void setTooltipText(const QString& content);
 
 private:
+    QString m_iconname;
     QList<Tomato> m_tomatolist;
     QAction *m_stopAct, *m_confAct, *m_anonAct, *m_exitAct;
     QActionGroup *m_tomatoActionGroup;

@@ -30,6 +30,7 @@
 #include <KActionCollection>
 #include <KHelpMenu>
 #include <KPassivePopup>
+#include <KColorScheme>
 #include <KGlobalSettings>
 #include <KNotification>
 #include <KAboutData>
@@ -37,6 +38,7 @@
 
 TopLevel::TopLevel(const KAboutData *aboutData, const QString &icon, QWidget *parent)
         : KStatusNotifierItem(parent),
+        m_iconname(icon),
         m_popup(new KPassivePopup),
         m_runningTomatoTime(0),
         m_nextNotificationTime(0)
@@ -240,7 +242,43 @@ void TopLevel::repaintTrayIcon()
 {
     if (m_runningTomatoTime != 0 && m_usevisualize)
     {
-        setOverlayIconByName(QLatin1String("task-ongoing"));
+        int oldWidth = 22;
+
+        QString countStr = QString::number(m_runningTomatoTime / 60);
+        QFont f = KGlobalSettings::generalFont();
+        f.setBold(true);
+
+        float pointSize = f.pointSizeF();
+        QFontMetrics fm(f);
+        int w = fm.width(countStr);
+        if (w > (oldWidth - 2) )
+        {
+            pointSize *= float(oldWidth - 2) / float(w);
+            f.setPointSizeF(pointSize);
+        }
+
+        // overlay
+        QPixmap overlayImg = KIcon(m_iconname).pixmap(22, 22);
+        QPainter p(&overlayImg);
+        p.setFont(f);
+        KColorScheme scheme(QPalette::Active, KColorScheme::View);
+
+        fm = QFontMetrics(f);
+        QRect boundingRect = fm.tightBoundingRect(countStr);
+        boundingRect.adjust(0, 0, 0, 2);
+        boundingRect.setHeight(qMin(boundingRect.height(), oldWidth));
+        boundingRect.moveTo((oldWidth - boundingRect.width()) / 2, ((oldWidth - boundingRect.height()) / 2) - 1);
+        p.setOpacity(0.7);
+        QBrush br(QColor(255, 255, 255), Qt::SolidPattern);
+        p.setBrush(br);
+        p.setPen(QColor(255, 255, 255));
+        p.drawRoundedRect(boundingRect, 2.0, 2.0);
+
+        p.setBrush(Qt::NoBrush);
+        p.setPen(QColor(0, 0, 0));
+        p.setOpacity(1.0);
+        p.drawText(overlayImg.rect(), Qt::AlignCenter, countStr);
+        setIconByPixmap(overlayImg);
     }
     else
     {
