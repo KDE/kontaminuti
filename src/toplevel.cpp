@@ -234,7 +234,7 @@ void TopLevel::runTomato(const Tomato &tomato)
     checkState();
     repaintTrayIcon();
 
-    m_timer->start(1000);
+    m_timer->start(1000 * 60);
 }
 
 
