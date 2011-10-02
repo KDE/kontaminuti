@@ -1,6 +1,15 @@
 [Desktop Entry]
 Name=Kontaminuti
+Name[nds]=Kontaminuti
+Name[pt]=Kontaminuti
+Name[sv]=Kontaminuti
+Name[uk]=Kontaminuti
+Name[x-test]=xxKontaminutixx
 GenericName=Pomodoro Technique Timer
+GenericName[pt]=Temporizador Técnico de Tomates
+GenericName[sv]=Tidtagare för Pomodoro tidshantering
+GenericName[uk]=Таймер Pomodoro Technique
+GenericName[x-test]=xxPomodoro Technique Timerxx
 Exec=kontaminuti
 Icon=kontaminuti
 Type=Application
