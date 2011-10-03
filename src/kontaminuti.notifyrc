@@ -2,6 +2,7 @@
 IconName=kontaminuti
 Comment=Pomodoro Technique Timer
 Comment[pt]=Temporizador Técnico de Tomates
+Comment[pt_BR]=Temporizador com a Técnica Pomodoro
 Comment[sv]=Tidtagare för Pomodoro tidshantering
 Comment[uk]=Таймер Pomodoro Technique
 Comment[x-test]=xxPomodoro Technique Timerxx
@@ -9,11 +10,13 @@ Comment[x-test]=xxPomodoro Technique Timerxx
 [Event/ready]
 Name=You earned a pomodoro
 Name[pt]=Ganhou um tomate
+Name[pt_BR]=Você ganhou um pomodoro
 Name[sv]=Du tjänade en pomodoro
 Name[uk]=Ви заслужили на один pomodoro
 Name[x-test]=xxYou earned a pomodoroxx
 Comment=One pomodoro has passed
 Comment[pt]=Passou um tomate
+Comment[pt_BR]=Um pomodoro passou
 Comment[sv]=En pomodoro har gått
 Comment[uk]=Минув один pomodoro
 Comment[x-test]=xxOne pomodoro has passedxx
@@ -23,11 +26,13 @@ Action=Sound
 [Event/reminder]
 Name=Pomodoro is getting lonely
 Name[pt]=O tomate sente-se só
+Name[pt_BR]=O pomodoro está ficando abandonado
 Name[sv]=Pomodoro börjar känna sig ensam
 Name[uk]=Pomodoro одиноко
 Name[x-test]=xxPomodoro is getting lonelyxx
 Comment=Pomodoro is getting lonely.
 Comment[pt]=O tomate continua só.
+Comment[pt_BR]=O pomodoro está ficando abandonado.
 Comment[sv]=Pomodoro börjar känna sig ensam.
 Comment[uk]=Pomodoro одиноко.
 Comment[x-test]=xxPomodoro is getting lonely.xx

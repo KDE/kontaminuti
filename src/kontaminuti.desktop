@@ -2,11 +2,13 @@
 Name=Kontaminuti
 Name[nds]=Kontaminuti
 Name[pt]=Kontaminuti
+Name[pt_BR]=Kontaminuti
 Name[sv]=Kontaminuti
 Name[uk]=Kontaminuti
 Name[x-test]=xxKontaminutixx
 GenericName=Pomodoro Technique Timer
 GenericName[pt]=Temporizador Técnico de Tomates
+GenericName[pt_BR]=Temporizador com a Técnica Pomodoro
 GenericName[sv]=Tidtagare för Pomodoro tidshantering
 GenericName[uk]=Таймер Pomodoro Technique
 GenericName[x-test]=xxPomodoro Technique Timerxx
