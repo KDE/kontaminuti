@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Kontaminuti
 Name[cs]=Kontaminuti
+Name[es]=Kontaminuti
 Name[nds]=Kontaminuti
 Name[nl]=Kontaminuti
 Name[pt]=Kontaminuti
@@ -9,6 +10,7 @@ Name[sv]=Kontaminuti
 Name[uk]=Kontaminuti
 Name[x-test]=xxKontaminutixx
 GenericName=Pomodoro Technique Timer
+GenericName[es]=Temporizador de técnica Pomodoro
 GenericName[nl]=Techniektimer van Pomodoro
 GenericName[pt]=Temporizador Técnico de Tomates
 GenericName[pt_BR]=Temporizador com a Técnica Pomodoro
