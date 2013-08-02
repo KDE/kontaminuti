@@ -1,6 +1,7 @@
 [Global]
 IconName=kontaminuti
 Comment=Pomodoro Technique Timer
+Comment[bs]=Paradajz tehnički tajmer
 Comment[es]=Temporizador de técnica Pomodoro
 Comment[et]=Pomodoro-tehnika taimer
 Comment[fr]=Minuteur pour la technique « Pomodoro »
@@ -19,6 +20,7 @@ Comment[x-test]=xxPomodoro Technique Timerxx
 
 [Event/ready]
 Name=You earned a pomodoro
+Name[bs]=Zaradili ste paradajz
 Name[es]=Ha ganado un pomodoro
 Name[et]=Pomodoro on välja teenitud
 Name[fr]=Vous avez gagné une tomate
@@ -35,6 +37,7 @@ Name[tr]=Bir pomodoro kazandınız
 Name[uk]=Ви заслужили на один pomodoro
 Name[x-test]=xxYou earned a pomodoroxx
 Comment=One pomodoro has passed
+Comment[bs]=Prošao paradajz
 Comment[es]=Ha pasado un pomodoro
 Comment[et]=Üks pomodoro läks mööda
 Comment[fr]=Une tomate s'est écoulée
@@ -55,6 +58,7 @@ Action=Sound
 
 [Event/reminder]
 Name=Pomodoro is getting lonely
+Name[bs]=Paradajz je usamljen
 Name[es]=Pomodoro se está quedando solo
 Name[et]=Pomodoro muutub üksildaseks
 Name[fr]=Pomodoro se sent seul
@@ -71,6 +75,7 @@ Name[tr]=Pomodoro yalnız hissediyor
 Name[uk]=Pomodoro одиноко
 Name[x-test]=xxPomodoro is getting lonelyxx
 Comment=Pomodoro is getting lonely.
+Comment[bs]=Paradajz je usamljen
 Comment[es]=Pomodoro se está quedando solo.
 Comment[et]=Pomodoro muutub üksildaseks.
 Comment[fr]=Pomodoro se sent seul.
